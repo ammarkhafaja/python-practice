@@ -1,0 +1,8 @@
+import math
+class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+        a=int(a,2)
+        b=int(b,2)
+        res=bin(a+b)
+        return res[2:]#because the result of bin function begin with ob
+        

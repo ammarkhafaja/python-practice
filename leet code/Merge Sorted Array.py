@@ -5,3 +5,5 @@ def merge(self, nums1: list[int], m: int, nums2: list[int], n: int) -> None:
     par1=nums1[:m]
     merge=sorted(par1+nums2[:n])
     nums1[:]=merge
+
+    

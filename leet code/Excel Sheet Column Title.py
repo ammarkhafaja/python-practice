@@ -1,29 +1,29 @@
-# def convertToTitle(columnNumber: int):
-#       if columnNumber <=26:
-#               return chr(columnNumber+64)
-#       else:
-#             res=[]  
-#             while columnNumber >=1:                        
-#                   if columnNumber>26:
-#                          if columnNumber%26==0:
-#                               if columnNumber/26 >26:
-#                                     res.append(chr((int((columnNumber/26)%26))+64))
-#                               else:
-#                                     res.append(chr((int(columnNumber%26))+64))
-#                                     columnNumber=columnNumber//26
-                        
-                        
-#                   else:
-#                          res.append(chr(int(columnNumber)+64))
-#                          break
-#       res=res[::-1]
-#       res="".join(res)
-#       return res
-def convertToTitle(columnNumber: int):
-      if(columnNumber%26==0):
-            return chr(int(columnNumber/2)+64)
-      if columnNumber <=26:
-            return chr(int(columnNumber)+64)
-      return convertToTitle(columnNumber%26)+convertToTitle(columnNumber//26)
+# Given an integer columnNumber, return its corresponding column title as it appears in an Excel sheet.
 
-print(convertToTitle(52))
+# For example:
+
+# A -> 1
+# B -> 2
+# C -> 3
+
+# ...
+# Z -> 26
+# AA -> 27
+# AB -> 28 
+# ...
+
+def convertToTitle(columnNumber: int):
+    result = []
+    while columnNumber > 0:
+        columnNumber -= 1                      # shift to 0-based
+        result.append(chr(ord('A') + columnNumber % 26))
+        columnNumber //= 26
+    return ''.join(reversed(result))
+print(convertToTitle(28))
+
+# recursive solution 
+def convertToTitle(columnNumber: int) -> str:
+    if columnNumber == 0:
+        return ""
+    columnNumber -= 1
+    return convertToTitle(columnNumber // 26) + chr(ord('A') + columnNumber % 26)
